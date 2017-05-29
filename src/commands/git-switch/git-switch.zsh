@@ -47,7 +47,7 @@ if [[ -z $candidates ]]; then
     exit 1
 fi
 
-selected_branch="$(echo "$candidates" | $filter)"
+selected_branch="$(echo "$candidates" | $filter | perl -pe 's/\e\[?.*?[\@-~]//g')"
 if [[ -z $selected_branch ]]; then
     exit 0
 fi
